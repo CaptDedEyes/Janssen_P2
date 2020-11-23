@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerTurnCardGameState : CardGameState
 {
     [SerializeField] Text _playerTurnTextUI = null;
+    [SerializeField] DropZone dropZone;
 
     int _playerTurnCount = 0;
 
@@ -13,6 +14,7 @@ public class PlayerTurnCardGameState : CardGameState
     {
         Debug.Log("Player Turn: ...Entering");
         _playerTurnTextUI.gameObject.SetActive(true);
+        dropZone.playersTurn = true;
 
         _playerTurnCount++;
         _playerTurnTextUI.text = "Player Turn: " + _playerTurnCount.ToString();
@@ -23,6 +25,8 @@ public class PlayerTurnCardGameState : CardGameState
     public override void Exit()
     {
         _playerTurnTextUI.gameObject.SetActive(false);
+        dropZone.playersTurn = false;
+
         //unhook from events
         StateMachine.Input.PressedConfirm -= OnPressedConfirm;
         Debug.Log("Player Turn: Exiting...");
@@ -31,5 +35,11 @@ public class PlayerTurnCardGameState : CardGameState
     void OnPressedConfirm()
     {
         StateMachine.ChangeState<EnemyTurnCardGameState>();
+    }
+
+    public void PlayerWins()
+    {
+        StateMachine.ChangeState<PlayerWinCardGameState>();
+        Debug.Log("Player wins!");
     }
 }

@@ -17,7 +17,7 @@ public class CardZoom : MonoBehaviour
         if(tag == "Player")
         {
             zoomCard = Instantiate(gameObject,
-            new Vector2(Input.mousePosition.x, Input.mousePosition.y + 125), Quaternion.identity);
+            new Vector2(Input.mousePosition.x, Input.mousePosition.y + 125f), Quaternion.identity);
 
             zoomCard.transform.SetParent(Canvas.transform, false);
             zoomCard.layer = LayerMask.NameToLayer("Zoom");
@@ -29,7 +29,7 @@ public class CardZoom : MonoBehaviour
         if (tag == "Enemy")
         {
             zoomCard = Instantiate(gameObject,
-            new Vector2(Input.mousePosition.x, Input.mousePosition.y - 125), Quaternion.identity);
+            new Vector2(Input.mousePosition.x, Input.mousePosition.y - 125f), Quaternion.identity);
 
             zoomCard.transform.SetParent(Canvas.transform, false);
             zoomCard.layer = LayerMask.NameToLayer("Zoom");

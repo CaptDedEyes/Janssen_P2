@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 5036593092584465288}
   - component: {fileID: 6831557414978807248}
   - component: {fileID: 6622048828868734045}
+  - component: {fileID: 3907233603173500971}
+  - component: {fileID: -2418047344146426440}
   - component: {fileID: 5283348074818714944}
   - component: {fileID: 1162704471466632043}
   - component: {fileID: 7829949968905666412}
@@ -113,6 +115,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canvas: {fileID: 0}
+  startDragSound: {fileID: 8300000, guid: 5a299402a8417464ebaf3f3fcbf6f209, type: 3}
+  endDragSound: {fileID: 8300000, guid: 20e8f05fcd331b145a1069a1d0e31276, type: 3}
 --- !u!114 &6831557414978807248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,6 +144,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardFront: {fileID: 21300000, guid: 4c405e6e036494a4b987542412fd3ce0, type: 3}
   CardBack: {fileID: 21300000, guid: 159a87051885ede4b9a2a27eb6ed3d1b, type: 3}
+--- !u!114 &3907233603173500971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5738390319246046237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe32683f21f3ae469f50758aa324979, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 1
+  amountText: {fileID: 5738390319372566981}
+--- !u!114 &-2418047344146426440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5738390319246046237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66b061d3386470e46b137ee96f20e82d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlight: {fileID: 795692820352521232, guid: 62a97ee984415c749bb1cf08d4fba210,
+    type: 3}
+  selectSound: {fileID: 8300000, guid: b40d22a815dba67488cf2790af4a2243, type: 3}
 --- !u!114 &5283348074818714944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,11 +242,33 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: -2418047344146426440}
+          m_MethodName: OnHoverEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 6831557414978807248}
+          m_MethodName: OnHoverExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: -2418047344146426440}
           m_MethodName: OnHoverExit
           m_Mode: 1
           m_Arguments:

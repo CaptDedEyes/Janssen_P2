@@ -7,9 +7,16 @@ public class DragDrop : MonoBehaviour
     public GameObject Canvas;
     private bool isDragging = false;
     private bool isOverDropZone = false;
+
     private GameObject dropZone;
     private GameObject startParent;
     private Vector2 startPosition;
+
+    [Header("SFX")]
+    public AudioClip startDragSound;
+    public AudioClip endDragSound;
+
+    private int maxChildren = 1;
 
     private void Awake()
     {
@@ -44,8 +51,8 @@ public class DragDrop : MonoBehaviour
             startParent = transform.parent.gameObject;
             startPosition = transform.position;
             isDragging = true;
+            AudioHelper.PlayClip2D(startDragSound, 1f);
         }
-        
     }
 
     public void EndDrag()
@@ -53,7 +60,7 @@ public class DragDrop : MonoBehaviour
         if(tag == "Player")
         {
             isDragging = false;
-            if (isOverDropZone == true)
+            if (isOverDropZone == true && dropZone.transform.childCount < maxChildren)
             {
                 transform.SetParent(dropZone.transform, false);
             }
@@ -62,6 +69,7 @@ public class DragDrop : MonoBehaviour
                 transform.position = startPosition;
                 transform.SetParent(startParent.transform, false);
             }
+            AudioHelper.PlayClip2D(endDragSound, 1f);
         }
     }
 }
